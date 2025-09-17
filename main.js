@@ -1,64 +1,76 @@
-/* ===========================
-   SAFE ADSENSE HANDLER
-   =========================== */
-function safeAdPush() {
-    try {
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-        console.warn("AdSense not loaded or blocked:", e);
-    }
-}
-
-/* ===========================
-   LOAD POSTS FROM JSON
-   =========================== */
 let posts = [];
 
-async function loadPosts() {
-    try {
-        const res = await fetch("posts.json");
-        posts = await res.json();
-        renderMainPost();
-        renderCarousel();
-        initCopyButtons();
-    } catch (err) {
-        console.error("Failed to load posts.json:", err);
-    }
+/* Load posts.json */
+function loadPosts() {
+    return fetch("posts.json")
+        .then(res => res.json())
+        .then(data => {
+            posts = data;
+            if (posts.length) {
+                loadMainPost(posts[0]);
+                loadCarousel(posts);
+            }
+        })
+        .catch(err => console.error("Error loading posts.json:", err));
 }
 
-/* ===========================
-   RENDER MAIN POST
-   =========================== */
-function renderMainPost(index = 0) {
+/* Escape HTML for code box */
+function escapeHTML(str) {
+    return str.replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")
+              .replace(/"/g, "&quot;");
+}
+
+/* Load main post */
+function loadMainPost(post) {
     const currentPostEl = document.getElementById("current-post");
-    if (!posts.length) return;
-
-    const post = posts[index];
-    currentPostEl.innerHTML = `<h2>${post.title}</h2>${post.content}`;
+    fetch(post.file)
+        .then(res => res.text())
+        .then(html => {
+            currentPostEl.innerHTML = `
+<h2>${post.title}</h2>
+<div class="code-box">
+  <button class="copy-btn">Copy</button>
+  <pre><code>${escapeHTML(html)}</code></pre>
+</div>`;
+            initCopyButtons();
+        })
+        .catch(err => {
+            currentPostEl.innerHTML = `<p>Failed to load post: ${err}</p>`;
+        });
 }
 
-/* ===========================
-   RENDER CAROUSEL
-   =========================== */
-function renderCarousel() {
+/* Load carousel */
+function loadCarousel(posts) {
     const carouselEl = document.getElementById("carousel");
     carouselEl.innerHTML = "";
-
-    posts.slice(1).forEach((post, idx) => {
+    posts.slice(1).forEach(post => {
         const card = document.createElement("div");
         card.className = "card";
         card.innerHTML = `<h4>${post.title}</h4>${post.preview}`;
         card.addEventListener("click", () => {
-            renderMainPost(idx + 1);
+            loadMainPost(post);
             window.scrollTo({ top: 0, behavior: "smooth" });
         });
         carouselEl.appendChild(card);
     });
 }
 
-/* ===========================
-   CAROUSEL BUTTONS
-   =========================== */
+/* Copy buttons */
+function initCopyButtons() {
+    document.querySelectorAll(".copy-btn").forEach(btn => {
+        btn.onclick = () => {
+            const code = btn.nextElementSibling.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                btn.innerText = "Copied!";
+                setTimeout(() => btn.innerText = "Copy", 1000);
+            });
+        };
+    });
+}
+
+/* Carousel buttons */
 function initCarouselButtons() {
     const carouselEl = document.getElementById("carousel");
     const prevBtn = document.querySelector(".carousel-btn.prev");
@@ -75,9 +87,7 @@ function initCarouselButtons() {
     });
 }
 
-/* ===========================
-   THEME SWITCHER
-   =========================== */
+/* Theme switcher */
 function initThemeSwitcher() {
     const toggleBtn = document.getElementById("themeToggle");
     toggleBtn.addEventListener("click", () => {
@@ -85,31 +95,15 @@ function initThemeSwitcher() {
         localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
     });
 
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "dark") document.body.classList.add("dark");
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+    }
 }
 
-/* ===========================
-   COPY BUTTONS
-   =========================== */
-function initCopyButtons() {
-    const buttons = document.querySelectorAll(".copy-btn");
-    buttons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            const code = btn.nextElementSibling.innerText;
-            navigator.clipboard.writeText(code).then(() => {
-                btn.innerText = "Copied!";
-                setTimeout(() => (btn.innerText = "Copy"), 1000);
-            });
-        });
-    });
-}
-
-/* ===========================
-   INIT BLOG
-   =========================== */
+/* Initialize */
 window.addEventListener("DOMContentLoaded", () => {
-    loadPosts();
-    initCarouselButtons();
-    initThemeSwitcher();
+    loadPosts().then(() => {
+        initCarouselButtons();
+        initThemeSwitcher();
+    });
 });
