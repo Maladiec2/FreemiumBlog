@@ -1,0 +1,12 @@
+[
+  {
+    "title": "How to Quickly Create a Minimal Blog",
+    "content": "<p>This is the full HTML template for a minimal style blog:</p><div class='code-box'><button class='copy-btn'>Copy</button><pre><code>&lt;!doctype html&gt; ...</code></pre></div>",
+    "preview": "<p>Creating a lightweight, fast blog...</p>"
+  },
+  {
+    "title": "Second Post Example",
+    "content": "<p>Hello world! This is my second inline HTML article. I can use <strong>bold</strong>, <em>italic</em>, and even <code>code</code>.</p>",
+    "preview": "<p>A short teaser for second post...</p>"
+  }
+]
