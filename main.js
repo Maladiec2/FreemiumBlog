@@ -35,22 +35,45 @@ function loadMainPost(post) {
         });
 }
 
-
-/* Load carousel */
+/* Load carousel dynamically */
 function loadCarousel(posts) {
     const carouselEl = document.getElementById("carousel");
     carouselEl.innerHTML = "";
-    posts.slice(1).forEach(post => {
+
+    if (!posts.length) return;
+
+    posts.forEach(post => {
         const card = document.createElement("div");
         card.className = "card";
-        card.innerHTML = `<h4>${post.title}</h4>${post.preview}`;
+
+        // Use preview if exists, otherwise fallback
+        const previewContent = post.preview || `<p>${truncateTextFromFile(post.file, 100)}</p>`;
+        card.innerHTML = `<h4>${post.title}</h4>${previewContent}`;
+
         card.addEventListener("click", () => {
             loadMainPost(post);
             window.scrollTo({ top: 0, behavior: "smooth" });
         });
+
         carouselEl.appendChild(card);
     });
 }
+
+/* Helper to fetch first n characters from HTML file as fallback preview */
+function truncateTextFromFile(file, length) {
+    let text = "";
+    fetch(file)
+        .then(res => res.text())
+        .then(html => {
+            text = html.replace(/<[^>]+>/g, ""); // strip tags
+            text = text.slice(0, length) + (text.length > length ? "..." : "");
+        })
+        .catch(err => {
+            text = "Preview not available";
+        });
+    return `<p>${text}</p>`;
+}
+
 
 /* Copy buttons */
 function initCopyButtons() {
