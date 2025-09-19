@@ -28,18 +28,13 @@ function loadMainPost(post) {
     fetch(post.file)
         .then(res => res.text())
         .then(html => {
-            currentPostEl.innerHTML = `
-<h2>${post.title}</h2>
-<div class="code-box">
-  <button class="copy-btn">Copy</button>
-  <pre><code>${escapeHTML(html)}</code></pre>
-</div>`;
-            initCopyButtons();
+            currentPostEl.innerHTML = html; // load raw HTML as-is
         })
         .catch(err => {
             currentPostEl.innerHTML = `<p>Failed to load post: ${err}</p>`;
         });
 }
+
 
 /* Load carousel */
 function loadCarousel(posts) {
