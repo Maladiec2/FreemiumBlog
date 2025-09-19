@@ -1,1 +1,54 @@
-<h1>TEST</h1>
+<h2>How to Create a Minimal Blog</h2>
+<p>
+Creating your own blog doesn’t need to be complicated.  
+With just a single HTML file, some CSS for styling, and a little JavaScript,  
+you can build a clean, Apple-inspired blog layout.  
+Below is a complete ready-to-use template.  
+Click <b>Copy</b> and paste it into your own <code>index.html</code> file to get started.
+</p>
+
+<div class="code-box">
+  <button class="copy-btn">Copy</button>
+  <pre><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;My Minimal Apple-Style Blog&lt;/title&gt;
+  &lt;!-- Kritinis CSS --&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body class="light"&gt;
+
+  &lt;!-- Header --&gt;
+  &lt;header&gt;
+    &lt;h1&gt;My Blog&lt;/h1&gt;
+    &lt;p&gt;Clean, minimal, Apple-inspired design.&lt;/p&gt;
+    &lt;!-- Theme switcher button --&gt;
+    &lt;button id="themeToggle"&gt;🌙&lt;/button&gt;
+  &lt;/header&gt;
+
+  &lt;!-- Main Post Section --&gt;
+  &lt;main&gt;
+    &lt;article id="current-post"&gt;
+      &lt;h2&gt;Loading...&lt;/h2&gt;
+      &lt;p&gt;Please wait while the post loads.&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+
+  &lt;!-- Other posts carousel --&gt;
+  &lt;section id="other-posts-section"&gt;
+    &lt;h3&gt;Other Posts&lt;/h3&gt;
+    &lt;div class="carousel-container"&gt;
+      &lt;button class="carousel-btn prev"&gt;‹&lt;/button&gt;
+      &lt;div class="carousel" id="carousel"&gt;&lt;/div&gt;
+      &lt;button class="carousel-btn next"&gt;›&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;!-- Minimal JS --&gt;
+  &lt;script src="main.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</div>
