@@ -218,4 +218,52 @@ body.dark .code-box .copy-btn:hover {
   color: #0a6ae5;
 }
 
+/* ===========================
+   ADS STYLING
+   =========================== */
+.ad-slot {
+  background: var(--card-bg);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--card-shadow);
+  padding: 1rem;
+  margin: 2rem 0;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
 
+.ad-slot:hover {
+  transform: scale(1.01);
+  box-shadow: 0 6px 20px var(--card-shadow);
+}
+
+.ad-label {
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  background: var(--accent-color);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* Banner ad spans full width */
+.banner-ad {
+  width: 100%;
+}
+
+/* Inline ad (after main post) */
+.inline-ad {
+  width: 100%;
+  margin: 2rem 0;
+}
+
+/* Side ad (next to carousel) */
+.side-ad {
+  max-width: 300px;
+  margin-bottom: 1rem;
+}

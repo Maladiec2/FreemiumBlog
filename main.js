@@ -118,10 +118,25 @@ function initThemeSwitcher() {
     }
 }
 
+/* Inject ads from config */
+function loadAds() {
+    if (typeof AD_CONFIG !== "undefined") {
+        const topBanner = document.getElementById("topBannerAd");
+        const inlineAd = document.getElementById("inlineAd");
+        const sideAd = document.getElementById("sideAd");
+
+        if (topBanner) topBanner.innerHTML += AD_CONFIG.topBanner;
+        if (inlineAd) inlineAd.innerHTML += AD_CONFIG.inlineAd;
+        if (sideAd) sideAd.innerHTML += AD_CONFIG.sideAd;
+    }
+}
+
+
 /* Initialize */
 window.addEventListener("DOMContentLoaded", () => {
     loadPosts().then(() => {
         initCarouselButtons();
         initThemeSwitcher();
+        loadAds(); // <-- dynamically load ads
     });
 });
