@@ -1,55 +1,66 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Minimal Apple-Style Blog</title>
-  <meta name="description" content="Free minimal blog template with built-in ad slots. Learn how to start a blog, customize it, and earn passive income.">
+  <!-- Kritinis CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="light">
 
-<header>
-  <h1>My Blog</h1>
-  <p>Clean, minimal, Apple-inspired design.</p>
-  <button id="themeToggle">🌙</button>
-</header>
+  <!-- Header -->
+  <header>
+    <h1>My Blog</h1>
+    <p>Clean, minimal, Apple-inspired design.</p>
+    <!-- Theme switcher button -->
+    <button id="themeToggle">🌙</button>
+  </header>
 
-<!-- Top Banner Ad -->
-<div class="ad-slot banner-ad">
-  <span class="ad-label">Ad</span>
-  <p>Top Banner Ad Placeholder</p>
-</div>
+  <!-- Ad Slot: Top Banner -->
+  <div class="ad-slot banner-ad">
+    <span class="ad-label">Ad</span>
+    <!-- Replace this with your ad script / iframe -->
+    <p>Top Banner Ad Placeholder</p>
+  </div>
 
-<main>
-  <section id="featured-post">
-    <article>
-      <h2><a href="posts/welcome.html">Welcome to the Blog About Itself</a></h2>
-      <p>This isn’t just another demo site — it’s both a free blog template and a living guide. <a href="posts/welcome.html">Read more →</a></p>
+  <!-- Main Post Section -->
+  <main>
+    <article id="current-post">
+      <h2>Loading...</h2>
+      <p>Please wait while the post loads.</p>
     </article>
-  </section>
+  </main>
 
+  <!-- Ad Slot: Inline Ad (after post) -->
+  <div class="ad-slot inline-ad">
+    <span class="ad-label">Ad</span>
+    <p>Inline Ad Placeholder</p>
+  </div>
+
+  <!-- Other posts carousel -->
   <section id="other-posts-section">
     <h3>Other Posts</h3>
+
+    <!-- Ad Slot: Carousel Side Ad -->
     <div class="ad-slot side-ad">
       <span class="ad-label">Ad</span>
       <p>Sidebar Ad Placeholder</p>
     </div>
+
     <div class="carousel-container">
       <button class="carousel-btn prev">‹</button>
       <div class="carousel" id="carousel"></div>
       <button class="carousel-btn next">›</button>
     </div>
   </section>
-</main>
 
-<!-- Inline Ad -->
-<div class="ad-slot inline-ad">
-  <span class="ad-label">Ad</span>
-  <p>Inline Ad Placeholder</p>
-</div>
+  <!-- Minimal JS -->
+  <script src="config.js"></script>
+  <script src="main.js"></script>
 
-<script src="config.js"></script>
-<script src="main.js"></script>
 </body>
+
 </html>

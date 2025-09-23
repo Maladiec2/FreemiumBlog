@@ -1,12 +1,12 @@
 [
   {
-    "title": "Welcome to the Blog About Itself",
-    "file": "articles/welcome.html",
-    "preview": "<p>This isn’t just another demo site — it’s both a free blog template and a living guide. Read more →</p>"
+    "title": "How to Create a Minimal Blog",
+    "file": "posts/post1.html",
+    "preview": "<p>Learn how to create a minimal Apple-style blog in just one file.</p>"
   },
   {
-    "title": "How to Customize Colors and Fonts",
-    "file": "articles/Capabilities.html",
-    "preview": "<p>Learn how to tweak the design to make the blog truly yours.</p>"
+    "title": "How to Create a Minimal Blog",
+    "file": "posts/post2.html",
+    "preview": "<p>Capabilities</p>"
   }
 ]
