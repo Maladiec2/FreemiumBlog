@@ -4,42 +4,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Minimal Apple-Style Blog</title>
-  <meta name="description" content="A clean, Apple-inspired minimal blog template with built-in ads and free setup guide.">
+  <meta name="description" content="Free minimal blog template with built-in ad slots. Learn how to start a blog, customize it, and earn passive income.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="light">
 
-  <!-- Header -->
-  <header>
-    <h1>My Blog</h1>
-    <p>Clean, minimal, Apple-inspired design.</p>
-    <button id="themeToggle">🌙</button>
-  </header>
+<header>
+  <h1>My Blog</h1>
+  <p>Clean, minimal, Apple-inspired design.</p>
+  <button id="themeToggle">🌙</button>
+</header>
 
-  <!-- Ad Slot: Top Banner -->
-  <div class="ad-slot banner-ad">
-    <span class="ad-label">Ad</span>
-    <p>Top Banner Ad Placeholder</p>
-  </div>
+<!-- Top Banner Ad -->
+<div class="ad-slot banner-ad">
+  <span class="ad-label">Ad</span>
+  <p>Top Banner Ad Placeholder</p>
+</div>
 
-  <!-- Main Section -->
-  <main>
+<main>
+  <section id="featured-post">
     <article>
-      <h2><a href="articles/welcome.html">Welcome to the Blog About Itself</a></h2>
-      <p>
-        This isn’t just another demo site — it’s both a free blog template and a living guide.  
-        <a href="articles/welcome.html">Read more →</a>
-      </p>
+      <h2><a href="posts/welcome.html">Welcome to the Blog About Itself</a></h2>
+      <p>This isn’t just another demo site — it’s both a free blog template and a living guide. <a href="posts/welcome.html">Read more →</a></p>
     </article>
-  </main>
+  </section>
 
-  <!-- Ad Slot: Inline Ad -->
-  <div class="ad-slot inline-ad">
-    <span class="ad-label">Ad</span>
-    <p>Inline Ad Placeholder</p>
-  </div>
-
-  <!-- Other posts carousel -->
   <section id="other-posts-section">
     <h3>Other Posts</h3>
     <div class="ad-slot side-ad">
@@ -52,8 +41,15 @@
       <button class="carousel-btn next">›</button>
     </div>
   </section>
+</main>
 
-  <script src="config.js"></script>
-  <script src="main.js"></script>
+<!-- Inline Ad -->
+<div class="ad-slot inline-ad">
+  <span class="ad-label">Ad</span>
+  <p>Inline Ad Placeholder</p>
+</div>
+
+<script src="config.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
