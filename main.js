@@ -140,3 +140,12 @@ window.addEventListener("DOMContentLoaded", () => {
         loadAds(); // <-- dynamically load ads
     });
 });
+
+// Hamburger Menu Toggle
+const menuBtn = document.getElementById("menuToggle");
+const sideMenu = document.getElementById("sideMenu");
+
+menuBtn.addEventListener("click", () => {
+  sideMenu.classList.toggle("open");   // show/hide side menu
+  menuBtn.classList.toggle("open");    // animate bars into X
+});
