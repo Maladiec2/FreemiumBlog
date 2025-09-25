@@ -46,18 +46,28 @@ function loadCarousel(posts) {
         const card = document.createElement("div");
         card.className = "card";
 
-        // Use preview if exists, otherwise fallback
-        const previewContent = post.preview || `<p>${truncateTextFromFile(post.file, 100)}</p>`;
-        card.innerHTML = `<h4>${post.title}</h4>${previewContent}`;
+        const previewContent = post.preview || `<p>Preview not available</p>`;
 
-        card.addEventListener("click", () => {
+        // Add real <a> link for SEO
+        card.innerHTML = `
+            <a href="${post.file}">
+                <h4>${post.title}</h4>
+                ${previewContent}
+            </a>
+        `;
+
+        // Enhance UX: prevent reload and load dynamically
+        card.querySelector("a").addEventListener("click", e => {
+            e.preventDefault();
             loadMainPost(post);
             window.scrollTo({ top: 0, behavior: "smooth" });
+            history.pushState(null, "", post.file); // update URL in bar
         });
 
         carouselEl.appendChild(card);
     });
 }
+
 
 /* Helper to fetch first n characters from HTML file as fallback preview */
 function truncateTextFromFile(file, length) {
