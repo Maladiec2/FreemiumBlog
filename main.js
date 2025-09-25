@@ -17,9 +17,9 @@ function loadPosts() {
 /* Escape HTML for code box */
 function escapeHTML(str) {
     return str.replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")
+              .replace(/"/g, "&quot;");
 }
 
 /* Load main post */
@@ -46,30 +46,18 @@ function loadCarousel(posts) {
         const card = document.createElement("div");
         card.className = "card";
 
-        const previewContent = post.preview || `<p>Preview not available</p>`;
+        // Use preview if exists, otherwise fallback
+        const previewContent = post.preview || `<p>${truncateTextFromFile(post.file, 100)}</p>`;
+        card.innerHTML = `<h4>${post.title}</h4>${previewContent}`;
 
-        // Add real <a> link for SEO
-        card.innerHTML = `
-            <a href="${post.file}">
-                <h4>${post.title}</h4>
-                ${previewContent}
-            </a>
-        `;
-
-        // Enhance UX: prevent reload and load dynamically
-        card.querySelector("a").addEventListener("click", e => {
-            e.preventDefault();
+        card.addEventListener("click", () => {
             loadMainPost(post);
             window.scrollTo({ top: 0, behavior: "smooth" });
-            const newUrl = new URL(post.file, window.location.origin + "/FreemiumBlog/");
-            history.pushState(null, "", newUrl);
-
         });
 
         carouselEl.appendChild(card);
     });
 }
-
 
 /* Helper to fetch first n characters from HTML file as fallback preview */
 function truncateTextFromFile(file, length) {
@@ -158,6 +146,6 @@ const menuBtn = document.getElementById("menuToggle");
 const sideMenu = document.getElementById("sideMenu");
 
 menuBtn.addEventListener("click", () => {
-    sideMenu.classList.toggle("open");   // show/hide side menu
-    menuBtn.classList.toggle("open");    // animate bars into X
+  sideMenu.classList.toggle("open");   // show/hide side menu
+  menuBtn.classList.toggle("open");    // animate bars into X
 });
