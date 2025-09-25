@@ -318,7 +318,7 @@ body.dark .code-box .copy-btn:hover {
 .hamburger span {
   display: block;
   height: 3px;
-  background: var(--bg-color); /* theme-aware */
+  background: var(--text-color); /* theme-aware */
   border-radius: 2px;
   transition: 0.3s;
 }
