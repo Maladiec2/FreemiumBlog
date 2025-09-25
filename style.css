@@ -65,6 +65,22 @@ header p {
   color: var(--accent-color);
 }
 
+#themeToggle .icon-sun {
+  display: inline;
+}
+#themeToggle .icon-moon {
+  display: none;
+}
+
+/* When dark mode is active */
+body.dark #themeToggle .icon-sun {
+  display: none;
+}
+body.dark #themeToggle .icon-moon {
+  display: inline;
+}
+
+
 /* ===========================
    MAIN POST
    =========================== */
