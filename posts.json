@@ -1,12 +1,12 @@
 [
   {
     "title": "Welcome to the Blog About Itself",
-    "file": "posts/post1.html",
+    "file": "post1.html",
     "preview": "<p>This blog is both a template and documentation — learn how it works...</p>"
   },
   {
     "title": "Building a Blog with Pure HTML, CSS, and JS",
-    "file": "posts/post2.html",
+    "file": "post2.html",
     "preview": "<p>No CMS, no database. Just clean HTML, CSS, JS. Works everywhere...</p>"
   }
 ]
