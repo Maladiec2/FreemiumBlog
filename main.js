@@ -17,9 +17,9 @@ function loadPosts() {
 /* Escape HTML for code box */
 function escapeHTML(str) {
     return str.replace(/&/g, "&amp;")
-              .replace(/</g, "&lt;")
-              .replace(/>/g, "&gt;")
-              .replace(/"/g, "&quot;");
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
 }
 
 /* Load main post */
@@ -61,7 +61,9 @@ function loadCarousel(posts) {
             e.preventDefault();
             loadMainPost(post);
             window.scrollTo({ top: 0, behavior: "smooth" });
-            history.pushState(null, "", post.file); // update URL in bar
+            const newUrl = new URL(post.file, window.location.origin + "/FreemiumBlog/");
+            history.pushState(null, "", newUrl);
+
         });
 
         carouselEl.appendChild(card);
@@ -156,6 +158,6 @@ const menuBtn = document.getElementById("menuToggle");
 const sideMenu = document.getElementById("sideMenu");
 
 menuBtn.addEventListener("click", () => {
-  sideMenu.classList.toggle("open");   // show/hide side menu
-  menuBtn.classList.toggle("open");    // animate bars into X
+    sideMenu.classList.toggle("open");   // show/hide side menu
+    menuBtn.classList.toggle("open");    // animate bars into X
 });
