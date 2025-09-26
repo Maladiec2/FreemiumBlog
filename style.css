@@ -351,3 +351,45 @@ body.dark .code-box .copy-btn:hover {
 .hamburger.open span:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
 }
+
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 2rem;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+#typed-log {
+  max-width: 800px;
+  margin: 5rem auto;
+  font-family: monospace;
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+.typed-line {
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.1rem;
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: #005ecb;
+}
